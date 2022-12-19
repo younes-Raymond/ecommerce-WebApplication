@@ -564,6 +564,7 @@ alert("im master-card")
       nav.style.cssText = "filter:blur(2px); pointer-events:none;"
       landingPage.style.cssText = "filter:blur(2px); pointer-events:none;";
      document.querySelector(".master-card img").style.cssText = "position: relative;"
+     closePaymentMethods.style.setProperty("margin"," 0% 0% 0% 10%")
      sendlocation()
     } else if (counter.textContent >= 1 && width < 600){
       // alert("im mobile deveces options")
