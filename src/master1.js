@@ -560,13 +560,14 @@ alert("im master-card")
 
   addBtn.onclick = () => {
     if(counter.textContent >= 1 && width > 600) {
-      alert(width)
       parentPayments.style.setProperty("display","block");
       nav.style.cssText = "filter:blur(2px); pointer-events:none;"
       landingPage.style.cssText = "filter:blur(2px); pointer-events:none;";
      document.querySelector(".master-card img").style.cssText = "position: relative;"
+     sendlocation()
     } else if (counter.textContent >= 1 && width < 600){
-      alert("im mobile deveces options")
+      // alert("im mobile deveces options")
+      sendlocation()
     }
    closePaymentMethods.onclick = () => {
     parentPayments.style.setProperty("display","none");
