@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Open+Sans:ital,wght@0,600;1,500&family=Poppins:wght@100&family=Roboto:wght@400;700&display=swap');
+:root 
+{
+  --main-orange: hsl(26, 100%, 55%);
+  --pale-orange:hsl(25, 100%, 94%);
+  --Very-dark-blue: hsl(220, 13%, 13%);
+--Dark-grayish-blue: hsl(219, 9%, 45%);
+--Grayish-blue: hsl(220, 14%, 75%);
+--Light-grayish-blue: hsl(223, 64%, 98%);
+--White: hsl(0, 0%, 100%);
+}
 body
 {
     margin: 0;
@@ -95,18 +105,6 @@ body h2 {
   color: var(--main-orange);
 }
 
-
-:root 
-{
-  --main-orange: hsl(26, 100%, 55%);
-  --pale-orange:hsl(25, 100%, 94%);
-  --Very-dark-blue: hsl(220, 13%, 13%);
---Dark-grayish-blue: hsl(219, 9%, 45%);
---Grayish-blue: hsl(220, 14%, 75%);
---Light-grayish-blue: hsl(223, 64%, 98%);
---White: hsl(0, 0%, 100%);
-}
-
 .popup {
   display: block;
   width: 100%;
@@ -187,7 +185,7 @@ body h2 {
 }
 .container-bar .basket
 {
-  margin-right: -180px;
+  /* margin-right: -180px; */
   display: grid;
   align-items: center;
   cursor: pointer;
@@ -205,10 +203,10 @@ body h2 {
     font-weight: 700;
     border-radius: 9px 9px 9px 9px;
 }
-.container-bar .logo
+/* .container-bar .logo
 {
   margin-right: -35px;
-}
+} */
 .container-bar ul 
 {
   display: inline-flex;
@@ -431,7 +429,6 @@ color: grey;
  border-radius: 15px;
  cursor: pointer;
  transition: all 3s;
-
 }
 .small-img {
 display: flex;

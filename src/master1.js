@@ -549,15 +549,7 @@ pre.onclick = () => {
    }
 }
 
-// setInterval(forMobile(), 50, 'Parameter 1', 'Parameter 2');
 function paymentMethods () {
-  masterCard.onclick = () => {
-alert("im master-card")
-  }
-  CashOnDelvery.onclick = () => {
-    alert("im cash on delevery")
-  }
-
   addBtn.onclick = () => {
     if(counter.textContent >= 1 && width > 600) {
       parentPayments.style.setProperty("display","block");
@@ -565,20 +557,32 @@ alert("im master-card")
       landingPage.style.cssText = "filter:blur(2px); pointer-events:none;";
      document.querySelector(".master-card img").style.cssText = "position: relative;"
      closePaymentMethods.style.setProperty("margin"," 0% 0% 0% 10%")
-     sendlocation()
-    } else if (counter.textContent >= 1 && width < 600){
-      // alert("im mobile deveces options")
-      sendlocation()
     }
-   closePaymentMethods.onclick = () => {
-    parentPayments.style.setProperty("display","none");
-    nav.style.cssText = "filter:none; pointer-events:visible;"
-    landingPage.style.cssText = "filter:none; pointer-events:visible;";
+    if (counter.textContent >= 1 && width < 600){
+      // landingPage.removeProperty("display");
+      addBtn.onclick = () => {
+        parentPayments.style.cssText = "display: block;pointer-events: visible;position: fixed;";
+        nav.style.cssText = "pointer-events:none; filter:blur(3px);"
+        landingPage.style.cssText = "pointer-events:none; filter:blur(3px); display:block";
+        document.querySelector(".master-card img").style.cssText = "position: relative;"
+         document.querySelector(".master-card").style.cssText = "width:20%;";
+         CashOnDelvery.style.setProperty("width","20%");
+         closePaymentMethods.style.setProperty("margin","0% 0% 0% 8%");
+         paymentMethod.style.setProperty("margin","-70% 0% 0% 0%")
+      }
    }
   }
+  closePaymentMethods.onclick = () => {
+    location.reload()
+
 }
+}
+
 paymentMethods()
 
+
+
+// setInterval(location.reload(), 40, 'Parameter 1', 'Parameter 2');
 
 
    
