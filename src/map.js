@@ -23,6 +23,7 @@ confirm_BTN.onclick = (e) => {
   if(no.classList.contains("active")) {
     alert("dont send datra ")
   } else if (yes.classList.contains("active")) {
+     window.location.href = "index2.html";
   const agree = prompt("do you want to confirm order (s) with picture","yes");
     if(agree === "yes") {
       window.location.href = "index2.html";
