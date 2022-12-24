@@ -89,6 +89,20 @@ function prefixAll () {
 }
 prefixAll()
 
+deleteIcon.onclick = function () {
+  confirmDelete.style.cssText = "display:block; width:12%; margin-left:72%; margin-top:-8%; transition: all 3s; cursor:pointer;";
+  deleteIcon.style.cssText = "transition:all 3s; display:none;"
+   if(confirmDelete.hasAttribute("src")) {
+      confirmDelete.onclick = function () {
+        cartContent.style.cssText = "display: none;"
+        textEmpthy.style.setProperty("display","block")
+        profile.classList.remove("active")
+        basketCounter.innerText = 0;
+        counter.innerText = 0
+      } 
+   }
+}
+
 // reset all options 
 window.onload = function () {
 parentPayments.style.setProperty("display","none")
@@ -257,20 +271,7 @@ document.getElementById("plus-mynis-id").style.cssText = "width:100%; height:45p
 document.getElementById("add-btn-id").style.cssText = "width:100%;margin: 5% 0% 8% 0%; height:45px;";
 document.querySelector(".add-btn span").style.setProperty("font-size","18px");
 
-deleteIcon.onclick = function () {
-  confirmDelete.style.cssText = "display:block; width:12%; margin-left:72%; margin-top:-8%; transition: all 3s; cursor:pointer;";
-  deleteIcon.style.cssText = "transition:all 3s; display:none;"
 
-   if(confirmDelete.hasAttribute("src")) {
-      confirmDelete.onclick = function () {
-        cartContent.style.cssText = "display: none;"
-        textEmpthy.style.setProperty("display","block")
-        profile.classList.remove("active")
-        basketCounter.innerText = 0;
-        counter.innerText = 0
-      } 
-   }
-}
 
 menuOptions.onclick = () => {
   cartempthyid.style.setProperty("display:none");
@@ -290,7 +291,6 @@ menuOptions.onclick = () => {
    }
  }
 }
-
 
 function countproducts () {
  let count = 0;
@@ -360,9 +360,7 @@ function countproducts () {
 }
 
 
-change.onclick = (e) => {
-change.classList.add("active")
-}
+
 
 let c = 1;
 next.onclick = (e) => {
