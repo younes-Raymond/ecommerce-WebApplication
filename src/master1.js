@@ -60,7 +60,6 @@ const spanCartEmptyTxt = document.getElementById("span-cart-empty.txt");
 const width = window.innerWidth;
 const menu = document.getElementById("menu");
 
-
 // start popup  variables 
 const popup = document.querySelector(".popup");
 const bigImgpopup = document.querySelector(".popup big-img");
@@ -73,6 +72,7 @@ const nex = document.getElementById("nex")
 const pre = document.getElementById("pre")
 const left = document.getElementById("left");
 // end popup variables
+
 
  // payment methods variables 
 const paymentMethod = document.querySelector(".payment-Methods");
@@ -88,21 +88,6 @@ function prefixAll () {
   next.style.cssText = "float:right;position:sticky;margin-top:-50%;width:7%;margin-right;cursor:pointer;"
 }
 prefixAll()
-
-deleteIcon.onclick = function () {
-  confirmDelete.style.cssText = "display:block; width:12%; margin-left:72%; margin-top:-8%; transition: all 3s; cursor:pointer;";
-  deleteIcon.style.cssText = "transition:all 3s; display:none;"
-   if(confirmDelete.hasAttribute("src")) {
-      confirmDelete.onclick = function () {
-        cartContent.style.cssText = "display: none;"
-        textEmpthy.style.setProperty("display","block")
-        profile.classList.remove("active")
-        basketCounter.innerText = 0;
-        counter.innerText = 0
-      } 
-   }
-}
-
 // reset all options 
 window.onload = function () {
 parentPayments.style.setProperty("display","none")
@@ -153,6 +138,12 @@ parentPayments.style.setProperty("display","none")
   }
 // sendlocation()
 
+
+const array1 = [1, 2, 3];
+
+console.log(array1.includes(2));
+
+
 profile.onmouseenter = function (){
    cartempthy.style.cssText = "display: block;"
    profile.classList.add("active");
@@ -174,33 +165,49 @@ profile.onmouseenter = function (){
  ACollections.onmouseenter = function () {
    spanC.style.setProperty("display","block")
    }
- ACollections.onmouseleave = function () {
-   spanC.style.setProperty("display","none")
-     }
+
  AMen.onmouseenter = function () {
        spanm.style.setProperty("display","block")
+       spanC.style.setProperty("display","none")
+1
        }
        AMen.onmouseleave = function () {
          spanm.style.setProperty("display","none")
+         spanC.style.setProperty("display","block")
+
          }
          AWomen.onmouseenter = function () {
            spanw.style.setProperty("display","block")
+           spanC.style.setProperty("display","none")
+
            }
            AWomen.onmouseleave = function () {
              spanw.style.setProperty("display","none")
+             spanC.style.setProperty("display","block")
+
              }
              AAbout.onmouseenter = function () {
                spana.style.setProperty("display","block")
+               spanC.style.setProperty("display","none")
+
                }
                AAbout.onmouseleave = function () {
                  spana.style.setProperty("display","none")
+                 spanC.style.setProperty("display","block")
+
                  }
  
                  AContact.onmouseenter = function () {
                    spanc.style.setProperty("display","block")
+                   spanC.style.setProperty("display","none")
+
+                   
+
                    }
                    AContact.onmouseleave = function () {
                      spanc.style.setProperty("display","none")
+                     spanC.style.setProperty("display","block")
+
                      }
                      // cataloge of pictures 
  small0ne.onmouseenter = function () {
@@ -271,7 +278,20 @@ document.getElementById("plus-mynis-id").style.cssText = "width:100%; height:45p
 document.getElementById("add-btn-id").style.cssText = "width:100%;margin: 5% 0% 8% 0%; height:45px;";
 document.querySelector(".add-btn span").style.setProperty("font-size","18px");
 
+deleteIcon.onclick = function () {
+  confirmDelete.style.cssText = "display:block; width:12%; margin-left:72%; margin-top:-8%; transition: all 3s; cursor:pointer;";
+  deleteIcon.style.cssText = "transition:all 3s; display:none;"
 
+   if(confirmDelete.hasAttribute("src")) {
+      confirmDelete.onclick = function () {
+        cartContent.style.cssText = "display: none;"
+        textEmpthy.style.setProperty("display","block")
+        profile.classList.remove("active")
+        basketCounter.innerText = 0;
+        counter.innerText = 0
+      } 
+   }
+}
 
 menuOptions.onclick = () => {
   cartempthyid.style.setProperty("display:none");
@@ -291,6 +311,7 @@ menuOptions.onclick = () => {
    }
  }
 }
+
 
 function countproducts () {
  let count = 0;
@@ -360,7 +381,9 @@ function countproducts () {
 }
 
 
-
+change.onclick = (e) => {
+change.classList.add("active")
+}
 
 let c = 1;
 next.onclick = (e) => {
@@ -547,17 +570,24 @@ pre.onclick = () => {
    }
 }
 
+// setInterval(forMobile(), 50, 'Parameter 1', 'Parameter 2');
 function paymentMethods () {
+  masterCard.onclick = () => {
+alert("im master-card")
+  }
+  CashOnDelvery.onclick = () => {
+    alert("im cash on delevery")
+  }
+
   addBtn.onclick = () => {
     if(counter.textContent >= 1 && width > 600) {
+      alert(width)
+      closePaymentMethods.style.cssText = "margin: 0% 0% 0% 10%"
       parentPayments.style.setProperty("display","block");
       nav.style.cssText = "filter:blur(2px); pointer-events:none;"
       landingPage.style.cssText = "filter:blur(2px); pointer-events:none;";
      document.querySelector(".master-card img").style.cssText = "position: relative;"
-     closePaymentMethods.style.setProperty("margin"," 0% 0% 0% 10%")
-    }
-    if (counter.textContent >= 1 && width < 600){
-      // landingPage.removeProperty("display");
+    } else if (counter.textContent >= 1 && width < 600){
       addBtn.onclick = () => {
         parentPayments.style.cssText = "display: block;pointer-events: visible;position: fixed;";
         nav.style.cssText = "pointer-events:none; filter:blur(3px);"
@@ -568,19 +598,15 @@ function paymentMethods () {
          closePaymentMethods.style.setProperty("margin","0% 0% 0% 8%");
          paymentMethod.style.setProperty("margin","-70% 0% 0% 0%")
       }
+    }
+   closePaymentMethods.onclick = () => {
+   location.reload();
    }
   }
-  closePaymentMethods.onclick = () => {
-    location.reload()
-
-}
 }
 
 paymentMethods()
 
-
-
-// setInterval(location.reload(), 40, 'Parameter 1', 'Parameter 2');
 
 
    
