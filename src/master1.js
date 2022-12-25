@@ -79,8 +79,36 @@ const paymentMethod = document.querySelector(".payment-Methods");
 const masterCard = document.querySelector(".master-card")
 const CashOnDelvery = document.querySelector(".CashOnDelevery")
 const parentPayments = document.querySelector(".parent-payments");
-const closePaymentMethods = document.getElementById("close-payment-methods")
+const closePaymentMethods = document.getElementById("close-payment-methods");
+
+// end payment method
+
+const login = document.querySelector(".login");
+
+// dark mode 
+const btn_mode= document.querySelector(".toggleButton");
+
+// dark mode 
+
 // end payment methods variables
+login.addEventListener("click", function() {
+  location.href = "login.html";
+});
+
+
+btn_mode.addEventListener("click", function() {
+  // var body = document.getElementsByTagName("body")[0];
+  if (body.classList.contains("dark-theme")) {
+    body.classList.remove("dark-theme");
+    document.querySelector(".nav-bar").classList.remove("dark-theme");
+    btn_mode.style.setProperty("background","white")
+    
+  } else {
+    body.classList.add("dark-theme");
+    document.querySelector(".nav-bar").classList.add("dark-theme");
+    btn_mode.style.setProperty("background","white");
+  }
+});
 
 function prefixAll () {
   bigImg.style.setProperty("cursor","inherit");
@@ -138,12 +166,6 @@ parentPayments.style.setProperty("display","none")
   }
 // sendlocation()
 
-
-const array1 = [1, 2, 3];
-
-console.log(array1.includes(2));
-
-
 profile.onmouseenter = function (){
    cartempthy.style.cssText = "display: block;"
    profile.classList.add("active");
@@ -169,7 +191,7 @@ profile.onmouseenter = function (){
  AMen.onmouseenter = function () {
        spanm.style.setProperty("display","block")
        spanC.style.setProperty("display","none")
-1
+
        }
        AMen.onmouseleave = function () {
          spanm.style.setProperty("display","none")
@@ -342,10 +364,9 @@ function countproducts () {
 
    } 
    if (priceStandart.textContent === '1250'){
-    let confirme =  confirm("hello are you a big seller mc harvey")
+    let confirme =  confirm("hello are you a big seller mc")
     if (confirme === true) {
-      alert("im from nest if statment");
-  
+     
     }
   }
 }
@@ -381,9 +402,7 @@ function countproducts () {
 }
 
 
-change.onclick = (e) => {
-change.classList.add("active")
-}
+
 
 let c = 1;
 next.onclick = (e) => {
@@ -471,7 +490,6 @@ closeMenu.onclick = () => {
   next.style.setProperty("display","block");
   previous.style.setProperty("display","block");
 }
-
 
 if(width < 600 ) {
   countproducts();
@@ -573,15 +591,15 @@ pre.onclick = () => {
 // setInterval(forMobile(), 50, 'Parameter 1', 'Parameter 2');
 function paymentMethods () {
   masterCard.onclick = () => {
-alert("im master-card")
+// alert("im master-card")
   }
   CashOnDelvery.onclick = () => {
-    alert("im cash on delevery")
+    // alert("im cash on delevery")
   }
 
   addBtn.onclick = () => {
     if(counter.textContent >= 1 && width > 600) {
-      alert(width)
+      // alert(width)
       closePaymentMethods.style.cssText = "margin: 0% 0% 0% 10%"
       parentPayments.style.setProperty("display","block");
       nav.style.cssText = "filter:blur(2px); pointer-events:none;"
@@ -606,6 +624,10 @@ alert("im master-card")
 }
 
 paymentMethods()
+
+
+
+
 
 
 
