@@ -57,9 +57,8 @@ const menuOptions = document.querySelector(".menu-options")
 const closeMenu = document.querySelector(".menu-options span");
 const cartempthyid = document.getElementById("cart-empthy-id")
 const spanCartEmptyTxt = document.getElementById("span-cart-empty.txt");
-const width = window.innerWidth;
+const width = window.innerWidth; 
 const menu = document.getElementById("menu");
-
 // start popup  variables 
 const popup = document.querySelector(".popup");
 const bigImgpopup = document.querySelector(".popup big-img");
@@ -72,32 +71,123 @@ const nex = document.getElementById("nex")
 const pre = document.getElementById("pre")
 const left = document.getElementById("left");
 // end popup variables
-
-
  // payment methods variables 
 const paymentMethod = document.querySelector(".payment-Methods");
 const masterCard = document.querySelector(".master-card")
 const CashOnDelvery = document.querySelector(".CashOnDelevery")
 const parentPayments = document.querySelector(".parent-payments");
 const closePaymentMethods = document.getElementById("close-payment-methods");
+// end payment methods variables
 
-// end payment method
-
-const login = document.querySelector(".login");
-
-// dark mode 
 const btn_mode= document.querySelector(".toggleButton");
 
-// dark mode 
 
-// end payment methods variables
+
+function forDesktopStyle () {
+ 
+ // nav bar 
+ ACollections.onmouseenter = function () {
+  spanC.style.setProperty("display","block")
+  }
+
+AMen.onmouseenter = function () {
+      spanm.style.setProperty("display","block")
+      spanC.style.setProperty("display","none")
+
+      }
+      AMen.onmouseleave = function () {
+        spanm.style.setProperty("display","none")
+        spanC.style.setProperty("display","block")
+
+        }
+        AWomen.onmouseenter = function () {
+          spanw.style.setProperty("display","block")
+          spanC.style.setProperty("display","none")
+
+          }
+          AWomen.onmouseleave = function () {
+            spanw.style.setProperty("display","none")
+            spanC.style.setProperty("display","block")
+
+            }
+            AAbout.onmouseenter = function () {
+              spana.style.setProperty("display","block")
+              spanC.style.setProperty("display","none")
+
+              }
+              AAbout.onmouseleave = function () {
+                spana.style.setProperty("display","none")
+                spanC.style.setProperty("display","block")
+
+                }
+
+                AContact.onmouseenter = function () {
+                  spanc.style.setProperty("display","block")
+                  spanC.style.setProperty("display","none")
+
+                  
+
+                  }
+                  AContact.onmouseleave = function () {
+                    spanc.style.setProperty("display","none")
+                    spanC.style.setProperty("display","block")
+
+                    }
+                    // cataloge of pictures 
+
+
+                     
+ small0ne.onmouseenter = function () {
+  small0ne.classList.add("active");
+  smalltwo.classList.remove("active")
+  smallthree.classList.remove("active")
+  smallfour.classList.remove("active")
+  bigImg.setAttribute("src","images/image-product-1.jpg")
+}
+small0ne.onmouseleave = function () {
+  small0ne.classList.add("active");
+  smalltwo.classList.remove("active")
+  smallthree.classList.remove("active")
+  smallfour.classList.remove("active")
+  bigImg.setAttribute("src","images/image-product-2.jpg")
+ }
+
+smalltwo.onmouseenter = function () {
+  smalltwo.classList.add("active");
+  small0ne.classList.remove("active")
+  smallthree.classList.remove("active")
+  smallfour.classList.remove("active")
+  bigImg.setAttribute("src","images/image-product-2.jpg")
+}
+smallthree.onmouseenter = function () {
+  smallthree.classList.add("active");
+  smalltwo.classList.remove("active")
+  smallfour.classList.remove("active")
+  small0ne.classList.remove("active")
+  bigImg.setAttribute("src","images/image-product-3.jpg")
+
+}
+smallfour.onmouseenter = function () {
+  smallfour.classList.add("active");
+  smalltwo.classList.remove("active")
+  smallthree.classList.remove("active")
+  small0ne.classList.remove("active")
+  bigImg.setAttribute("src","images/image-product-4.jpg")
+}
+}
+forDesktopStyle()
+
+
+// start login  icon function 
+const login = document.querySelector(".login");
 login.addEventListener("click", function() {
   location.href = "login.html";
 });
+// end login function 
 
 
+// dark mode 
 btn_mode.addEventListener("click", function() {
-  // var body = document.getElementsByTagName("body")[0];
   if (body.classList.contains("dark-theme")) {
     body.classList.remove("dark-theme");
     document.querySelector(".nav-bar").classList.remove("dark-theme");
@@ -109,13 +199,21 @@ btn_mode.addEventListener("click", function() {
     btn_mode.style.setProperty("background","white");
   }
 });
+// end darkmode 
 
+basket.onclick = () => {
+  cartempthyid.style.setProperty("display","block");
+}
+
+// start fix probleme in 
 function prefixAll () {
   bigImg.style.setProperty("cursor","inherit");
   previous.style.cssText = "float:left;margin-top:50%;width:7%;margin-left:5%;z-index:10;position:absolute;cursor:pointer;"
   next.style.cssText = "float:right;position:sticky;margin-top:-50%;width:7%;margin-right;cursor:pointer;"
 }
 prefixAll()
+
+function ResetAllOption () {
 // reset all options 
 window.onload = function () {
 parentPayments.style.setProperty("display","none")
@@ -135,9 +233,12 @@ parentPayments.style.setProperty("display","none")
     cartempthy.style.setProperty("display","none");
     popup.style.setProperty("display","none")
   }
-
   // end when app do refrech 
- function sendlocation () {
+}
+ResetAllOption()
+
+
+ function sendLocationToDB(){
     if ('geolocation' in navigator) {
       console.log("geolocation is avilable")
       navigator.geolocation.getCurrentPosition(async position => {
@@ -151,21 +252,17 @@ parentPayments.style.setProperty("display","none")
       },
       body: JSON.stringify(data)
   }
-   fetch("/api", options);
-   
-  //  .then(response => {
-    // console.log(response)
-  // })
-
-  //  const dataa = await response.json();
-  //  console.log(dataa);
+   fetch("/api", options)
+   .then(res => res.json())
+   .then(response => console.log('Form data received'))
+   .catch(error => console.error('Error:', error));
    });
   } else {
       console.log("erour");
   }
-  }
-// sendlocation()
 
+  }
+  
 profile.onmouseenter = function (){
    cartempthy.style.cssText = "display: block;"
    profile.classList.add("active");
@@ -176,103 +273,36 @@ profile.onmouseenter = function (){
      }
    }
  }
- basket.onclick = function () {
- cartempthy.style.setProperty("display","block");
- profile.classList.add("active");
- }
+
+ 
  cartempthy.onmouseleave = function () {
    cartempthy.style.setProperty("display","none")
  }
- // nav bar 
- ACollections.onmouseenter = function () {
-   spanC.style.setProperty("display","block")
-   }
 
- AMen.onmouseenter = function () {
-       spanm.style.setProperty("display","block")
-       spanC.style.setProperty("display","none")
 
-       }
-       AMen.onmouseleave = function () {
-         spanm.style.setProperty("display","none")
-         spanC.style.setProperty("display","block")
-
-         }
-         AWomen.onmouseenter = function () {
-           spanw.style.setProperty("display","block")
-           spanC.style.setProperty("display","none")
-
-           }
-           AWomen.onmouseleave = function () {
-             spanw.style.setProperty("display","none")
-             spanC.style.setProperty("display","block")
-
-             }
-             AAbout.onmouseenter = function () {
-               spana.style.setProperty("display","block")
-               spanC.style.setProperty("display","none")
-
-               }
-               AAbout.onmouseleave = function () {
-                 spana.style.setProperty("display","none")
-                 spanC.style.setProperty("display","block")
-
-                 }
- 
-                 AContact.onmouseenter = function () {
-                   spanc.style.setProperty("display","block")
-                   spanC.style.setProperty("display","none")
-
-                   
-
-                   }
-                   AContact.onmouseleave = function () {
-                     spanc.style.setProperty("display","none")
-                     spanC.style.setProperty("display","block")
-
-                     }
-                     // cataloge of pictures 
- small0ne.onmouseenter = function () {
-   small0ne.classList.add("active");
-   smalltwo.classList.remove("active")
-   smallthree.classList.remove("active")
-   smallfour.classList.remove("active")
-   bigImg.setAttribute("src","images/image-product-1.jpg")
- }
- small0ne.onmouseleave = function () {
-   small0ne.classList.add("active");
-   smalltwo.classList.remove("active")
-   smallthree.classList.remove("active")
-   smallfour.classList.remove("active")
-   bigImg.setAttribute("src","images/image-product-2.jpg")
+ function paymentSttleForMobile () {
+  paymentMethod.style.cssText = "flex-direction: column;";
+//  document.querySelector('.master-card').style.cssText = 'width:60%;';
+  CashOnDelvery.style.cssText = 'width:50%; ';
+  parentPayments.style.cssText = "-120% 0%;";
+  masterCard.style.setProperty("width","60%");
   }
- 
- smalltwo.onmouseenter = function () {
-   smalltwo.classList.add("active");
-   small0ne.classList.remove("active")
-   smallthree.classList.remove("active")
-   smallfour.classList.remove("active")
-   bigImg.setAttribute("src","images/image-product-2.jpg")
- }
- smallthree.onmouseenter = function () {
-   smallthree.classList.add("active");
-   smalltwo.classList.remove("active")
-   smallfour.classList.remove("active")
-   small0ne.classList.remove("active")
-   bigImg.setAttribute("src","images/image-product-3.jpg")
- 
- }
- smallfour.onmouseenter = function () {
-   smallfour.classList.add("active");
-   smalltwo.classList.remove("active")
-   smallthree.classList.remove("active")
-   small0ne.classList.remove("active")
-   bigImg.setAttribute("src","images/image-product-4.jpg")
- }
 
 
-function forMobile (){
-  console.log(width);
+function forMobileStyle (){
+  paymentSttleForMobile()
+  document.querySelector('.login').style.setProperty("display","none");
+  document.querySelector('.toggleButton').style.setProperty('display','none');
+  // console.log(width);
+  landingPage.onclick = () => {
+  cartempthyid.style.setProperty("display","none")
+  }
+  basket.onclick = function () {
+    cartempthyid.style.cssText = "display: block; width: 96%;margin: 1% 0% 0% 2%;height: 33%;"
+  
+   cartempthy.style.setProperty("display","block");
+   profile.classList.add("active");
+   }
   menu.setAttribute("src", "images/icon-menu.svg");
   menu.style.cssText = "height:18%; margin:0 4%; cursor:pointer;";
   document.getElementById("logo").style.cssText = "margin-right:-6%;"
@@ -283,7 +313,7 @@ document.getElementById("profile-id").style.cssText = "height:40%; cursor:pointe
   document.querySelector(".nav-bar").style.setProperty("height","80px");
  const hr =  document.getElementById("hr[0]");
  hr.remove()
-document.getElementById("cart-empthy-id").style.cssText = "display:none; width:100%;";
+document.getElementById("cart-empthy-id").style.cssText = "display:none; width:96%;";
 document.getElementById("landing-page").style.setProperty("flex-direction","column");
 document.getElementById("left").style.cssText = "margin:-1% 0 0 0; width:100%;";
 document.getElementById("big-img-id").style.cssText = "width:100%; border-radius:0px;"
@@ -300,23 +330,8 @@ document.getElementById("plus-mynis-id").style.cssText = "width:100%; height:45p
 document.getElementById("add-btn-id").style.cssText = "width:100%;margin: 5% 0% 8% 0%; height:45px;";
 document.querySelector(".add-btn span").style.setProperty("font-size","18px");
 
-deleteIcon.onclick = function () {
-  confirmDelete.style.cssText = "display:block; width:12%; margin-left:72%; margin-top:-8%; transition: all 3s; cursor:pointer;";
-  deleteIcon.style.cssText = "transition:all 3s; display:none;"
-
-   if(confirmDelete.hasAttribute("src")) {
-      confirmDelete.onclick = function () {
-        cartContent.style.cssText = "display: none;"
-        textEmpthy.style.setProperty("display","block")
-        profile.classList.remove("active")
-        basketCounter.innerText = 0;
-        counter.innerText = 0
-      } 
-   }
-}
-
 menuOptions.onclick = () => {
-  cartempthyid.style.setProperty("display:none");
+  cartempthyid.style.setProperty("display","none");
 }
 
  profile.onmouseenter = function (){
@@ -332,7 +347,29 @@ menuOptions.onclick = () => {
      }
    }
  }
+ deleteCartContent()
+ // payment style of mobile less than or equal to 600 px 
+
 }
+
+function deleteCartContent () {
+  deleteIcon.onclick = function () {
+    // alert("im from mohamed")
+    confirmDelete.style.cssText = "display:block; width:12%; margin-left:72%; margin-top:-8%; transition: all 3s; cursor:pointer;";
+    deleteIcon.style.cssText = "transition:all 3s; display:none;"
+     if(confirmDelete.hasAttribute("src")) {
+        confirmDelete.onclick = function () {
+          cartContent.style.cssText = "display: none;"
+          textEmpthy.style.setProperty("display","block")
+          profile.classList.remove("active")
+          basketCounter.innerText = 0;
+          counter.innerText = 0
+        } 
+     }
+  }
+}
+
+deleteCartContent()
 
 
 function countproducts () {
@@ -388,7 +425,6 @@ function countproducts () {
     counter.textContent = 0;
   }
   }
-
      if(confirmDelete.hasAttribute("src")) {
       confirmDelete.onclick = function () {
        console.log(count)
@@ -400,9 +436,6 @@ function countproducts () {
       } 
    }
 }
-
-
-
 
 let c = 1;
 next.onclick = (e) => {
@@ -491,10 +524,17 @@ closeMenu.onclick = () => {
   previous.style.setProperty("display","block");
 }
 
+
+
+// setInterval( mediaQuery_F(), 50, 'Parameter 1', 'Parameter 2');
+
+
 if(width < 600 ) {
   countproducts();
-  forMobile();  
+  forMobileStyle();  
+  // sendLocationToDB()
 } else if (width > 600) {
+  forDesktopStyle()
   countproducts();
   next.style.setProperty("display","none")
   previous.style.setProperty("display","none");
@@ -552,7 +592,6 @@ if(countpopup === 0){
 else if(countpopup=== 1){
   popupImgBig.setAttribute("src","images/image-product-2.jpg");
 
-
 }
 else if(countpopup=== 2){
   popupImgBig.setAttribute("src","images/image-product-3.jpg");
@@ -570,8 +609,8 @@ if(countpopup < 0) {
   return countpopup === 0;
  }
 }
-
 }
+
 pre.onclick = () => {
   countpopup--;
   if(countpopup=== 0){
@@ -588,18 +627,16 @@ pre.onclick = () => {
    }
 }
 
-// setInterval(forMobile(), 50, 'Parameter 1', 'Parameter 2');
-function paymentMethods () {
-  masterCard.onclick = () => {
-// alert("im master-card")
-  }
-  CashOnDelvery.onclick = () => {
-    // alert("im cash on delevery")
-  }
+masterCard.onclick = () => {
+  // alert("im master-card")
+    }
+    CashOnDelvery.onclick = () => {
+      sendLocationToDB()
+    }
 
+function paymentMethods () {
   addBtn.onclick = () => {
     if(counter.textContent >= 1 && width > 600) {
-      // alert(width)
       closePaymentMethods.style.cssText = "margin: 0% 0% 0% 10%"
       parentPayments.style.setProperty("display","block");
       nav.style.cssText = "filter:blur(2px); pointer-events:none;"
@@ -611,10 +648,10 @@ function paymentMethods () {
         nav.style.cssText = "pointer-events:none; filter:blur(3px);"
         landingPage.style.cssText = "pointer-events:none; filter:blur(3px); display:block";
         document.querySelector(".master-card img").style.cssText = "position: relative;"
-         document.querySelector(".master-card").style.cssText = "width:20%;";
-         CashOnDelvery.style.setProperty("width","20%");
-         closePaymentMethods.style.setProperty("margin","0% 0% 0% 8%");
-         paymentMethod.style.setProperty("margin","-70% 0% 0% 0%")
+         document.querySelector(".master-card").style.cssText = "width:60%;";
+         CashOnDelvery.style.setProperty("width","60%");
+         closePaymentMethods.style.setProperty("margin","15% 0%");
+         paymentMethod.style.setProperty("margin","-130% 0% 0% 0%")
       }
     }
    closePaymentMethods.onclick = () => {
