@@ -233,11 +233,7 @@ body h2 {
     font-weight: 700;
     border-radius: 9px 9px 9px 9px;
 }
-.container-bar .logo
-{
-  /* margin-right: -35px; */
-  margin: 0% 0% 0% -15%;
-}
+
 .container-bar ul 
 {
   display: inline-flex;
